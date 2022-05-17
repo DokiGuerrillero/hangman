@@ -33,7 +33,8 @@ class Hangman
 
   def select_save
     display_saves
-    file = File.read("./files/saves/#{Dir.entries('./files/saves')[gets.chomp.to_i]}")
+    number = gets.chomp.to_i
+    file = File.read("./files/saves/#{Dir.entries('./files/saves')[number]}")
     parameters = JSON.parse(file).values
     Game.new(parameters[2], parameters[3], File.read('files/assets/interface.erb'), parameters, load: true)
   end
